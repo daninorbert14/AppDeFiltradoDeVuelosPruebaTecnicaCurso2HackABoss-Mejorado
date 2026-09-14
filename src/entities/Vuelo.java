@@ -2,10 +2,14 @@ package entities;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import static java.lang.String.format;
 
-// Clase objeto Vuelo
+// Clase objeto Vuelo.
 public class Vuelo {
+    // Constante de formateo de fecha para que se muestre en orden de día, mes y año.
+    private static final DateTimeFormatter FORMATO_FECHA = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     private int id;
     private String nombreVuelo;
     private String empresa;
@@ -14,8 +18,7 @@ public class Vuelo {
     private LocalDate fechaSalida;
     private LocalDate fechaLlegada;
 
-    public static final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
+    // Método Constructor.
     public Vuelo(int id, String nombreVuelo, String empresa, String lugarSalida, String lugarLlegada, LocalDate fechaSalida, LocalDate fechaLlegada) {
         this.id = id;
         this.nombreVuelo = nombreVuelo;
@@ -26,6 +29,7 @@ public class Vuelo {
         this.fechaLlegada = fechaLlegada;
     }
 
+    // Métodos Getters.
     public int getId() {
         return id;
     }
@@ -54,10 +58,11 @@ public class Vuelo {
         return fechaLlegada;
     }
 
+    // Método toString modificado para la personalización de la impresión de cada vuelo.
     @Override
     public String toString() {
         return format("Vuelo ➡️ ID: %-8d | Nombre: %-8s | Empresa: %-15s | Salida: %-10s | Llegada: %-12s | Fecha de salida: %-8s | Fecha de llegada: %-8s",
-                getId(), getNombreVuelo(), getEmpresa(), getLugarSalida(), getLugarLlegada(), getFechaSalida().format(formatoFecha), getFechaLlegada().format(formatoFecha));
+                getId(), getNombreVuelo(), getEmpresa(), getLugarSalida(), getLugarLlegada(), getFechaSalida().format(FORMATO_FECHA), getFechaLlegada().format(FORMATO_FECHA));
     }
 
 }
